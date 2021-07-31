@@ -1,7 +1,8 @@
 package jpabook.jpashop.domain;
 
-
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.aspectj.weaver.ast.Or;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Entity
 @Table(name = "orders") //이렇게 명시하지 않으면 order가 되버리는데 이러면 order 메서드랑 혼동될 수 있어서 orders라고 명시함.
 @Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order {
 
     @Id @GeneratedValue
