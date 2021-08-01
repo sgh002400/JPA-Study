@@ -19,7 +19,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @GetMapping("/members/new")
+    @GetMapping(value = "/members/new")
     public String createForm(Model model) {
 
         model.addAttribute("memberForm", new MemberForm()); //controller에서 view로 넘어갈 때 memberForm 데이터를 넘겨준다.
