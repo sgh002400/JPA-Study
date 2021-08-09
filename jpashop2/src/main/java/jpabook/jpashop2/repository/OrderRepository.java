@@ -27,6 +27,14 @@ public class OrderRepository {
         return em.find(Order.class, id);
     }
 
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery( //일반 join은 안됨! join fetch를 사용해야 실제 질의하는 대상 Entity와 Fetch join이 걸려있는 Entity를 포함한 컬럼 함께 SELECT 한다.
+                "select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
+    }
+
     /** 안좋은 방법! **/
     public List<Order> findAllByString(OrderSearch orderSearch) {
 
