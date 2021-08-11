@@ -55,6 +55,18 @@ public class OrderRepository {
         //부정합하게 조회될 수 있다.
     }
 
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return em.createQuery(
+                        "select o from Order o" +
+                                " join fetch o.member m" +
+                                " join fetch o.delivery d", Order.class)
+                //컬렉션은 페이징이 안되기 때문에 지연 로딩으로 조회한다. -> 이 부분은 필요할 때 다시 공부
+                //지연 로딩 성능 최적화를 위해 hibernate.default_batch_fetch_size , @BatchSize 를 적용한다
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
     /** 안좋은 방법! **/
 
     public List<Order> findAllByString(OrderSearch orderSearch) {
