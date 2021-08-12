@@ -10,6 +10,7 @@ spring:
       ddl-auto: none # 애플리케이션 실행 시점에 테이블을 drop 하고, 다시 생성한다.
     properties:
       hibernate:
+        default_batch_fetch_size: 1000 #In 쿼리를 날려준다. 엄청나게 최적화됨!
         # show_sql: true -> System.out 에 하이버네이트 실행 SQL을 남긴다. 좋지 않다!
         format_sql: true
 
