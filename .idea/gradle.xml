@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+=======
+>>>>>>> 67bd42eea16dfe41e8af1ee75cc10b3b2d9b17f6
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
+<<<<<<< HEAD
+=======
         <option name="externalProjectPath" value="$PROJECT_DIR$/jpashop1" />
         <option name="modules">
           <set>
@@ -13,6 +19,7 @@
       </GradleProjectSettings>
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
+>>>>>>> 67bd42eea16dfe41e8af1ee75cc10b3b2d9b17f6
         <option name="externalProjectPath" value="$PROJECT_DIR$/jpashop2" />
         <option name="modules">
           <set>

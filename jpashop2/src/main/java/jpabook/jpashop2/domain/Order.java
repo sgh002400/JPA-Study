@@ -20,11 +20,9 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) //OneToOne & ManyToOne은 Default가 fetch = FetchType.EAGER인데 즉시로딩( EAGER )은 예측이 어렵고,
-    //어떤 SQL이 실행될지 추적하기 어렵다. 특히 JPQL을 실행할 때 N+1문제가 자주 발생한다.
-    //연관된 엔티티를 함께 DB에서 조회해야 하면, fetch join 또는 엔티티 그래프 기능을 사용한다.
-    @JoinColumn(name = "member_id") //fk가 member_id가 됨
-    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY) //지연로딩을 하면 프록시 객체를 넣어놓고 멤버 객체를 건들 때, DB에 멤버 객체 SQL을 날려서 프록시를 초기화해준다.
+    @JoinColumn(name = "member_id")
+    private Member member; // = new ByteBuddyInterceptor; 이런식으로 프록시 객체를 넣어준다.
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)//Entity의 상태 변화가 있으면 연관되어 있는 Entity에도 상태 변화를 전이시키는 옵션이다.(참고 : https://www.inflearn.com/questions/56718)
     private List<OrderItem> orderItems = new ArrayList<>();
